@@ -167,11 +167,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_fileActionPerformed
 
     private void MenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem1ActionPerformed
-        new InputNewDocument().setVisible(true);
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        int folder = chooser.showOpenDialog(this);
+        if (folder == JFileChooser.APPROVE_OPTION) {
+            index.readDirectory(chooser.getSelectedFile());
+//            JOptionPane.showConfirmDialog(this, "Data sudah Masuk");
+            new InputNewDocument(index).setVisible(true);
+        }
     }//GEN-LAST:event_MenuItem1ActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        new SearchResult().setVisible(true);
         index.makeDictionaryWithTermNumber();
         ArrayList<SearchingResult> cari = index.searchCosineSimilarity(searchDocument.getText());
         searchDocument.setText("");
@@ -185,11 +193,12 @@ public class Home extends javax.swing.JFrame {
             Object[] item = {cari.get(i).getDocument().getId(), cari.get(i).getDocument().getContent(), cari.get(i).getSimilarity()};
             model.addRow(item);
         }
-
+         new SearchResult().setVisible(true);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDocumentActionPerformed
         // TODO add your handling code here:
+        new InputNewDocument(index).setVisible(true);
     }//GEN-LAST:event_searchDocumentActionPerformed
 
     /**

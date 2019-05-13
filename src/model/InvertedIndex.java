@@ -29,6 +29,11 @@ public class InvertedIndex {
     public void addNewDocument(Document document) {
         getListOfDocument().add(document);
     }
+      private int getDocumentSize() {
+          return this.listOfDocument.size();
+        //To change body of generated methods, choose Tools | Templates.
+    }
+     
 
     public ArrayList<Posting> getUnsortedPostingList() {
         // cek untuk term yang muncul lebih dari 1 kali
@@ -552,7 +557,22 @@ public class InvertedIndex {
     //fungsi untuk membuat list dokument dari sebuah directory
     //asumsikan isi file cukup disimpan dalam sebuah obyek string
     public void readDirectory(File directory) {
-        
-
+        File[] fileNames = directory.listFiles();
+        int i = getDocumentSize() + 1;
+        for (File currentFile : fileNames) {
+            if (currentFile.isDirectory()) {
+                readDirectory(currentFile);
+            } else {
+                Document doc = new Document();
+                doc.readFile(i, currentFile);
+                addNewDocument(doc);
+            }
+            i++;
+        }
+        makeDictionaryWithTermNumber();
     }
+
+     
+       
+    
 }

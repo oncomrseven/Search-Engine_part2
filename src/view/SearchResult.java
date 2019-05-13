@@ -16,6 +16,7 @@ public class SearchResult extends javax.swing.JFrame {
      */
     public SearchResult() {
         initComponents();
+        
     }
 
     /**
@@ -43,7 +44,7 @@ public class SearchResult extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Doc","Content","Similarity"
+                "ID Doc","Judul Document","Similarity"
             }
         ));
         jScrollPane1.setViewportView(table1);
