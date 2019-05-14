@@ -5,7 +5,13 @@
  */
 package model;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -13,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  *
@@ -29,11 +36,11 @@ public class InvertedIndex {
     public void addNewDocument(Document document) {
         getListOfDocument().add(document);
     }
-      private int getDocumentSize() {
-          return this.listOfDocument.size();
+
+    private int getDocumentSize() {
+        return this.listOfDocument.size();
         //To change body of generated methods, choose Tools | Templates.
     }
-     
 
     public ArrayList<Posting> getUnsortedPostingList() {
         // cek untuk term yang muncul lebih dari 1 kali
@@ -572,7 +579,41 @@ public class InvertedIndex {
         makeDictionaryWithTermNumber();
     }
 
-     
-       
-    
+    // Uses listFiles method  
+    public void listAllFiles(File folder) {
+//         System.out.println("In listAllfiles(File) method");
+        File[] fileNames = folder.listFiles();
+        int idDoc = 1;
+        for (File file : fileNames) {
+            // if directory call the same method again
+            if (file.isDirectory()) {
+                listAllFiles(file);
+            } else {
+                try {
+                    readContent(file, idDoc);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+            idDoc++;
+        }
+        makeDictionaryWithTermNumber();
+    }
+
+    public void readContent(File file, int idDoc) throws IOException {
+//         System.out.println("read file " + file.getCanonicalPath() );
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String strLine;
+            String content = "";
+            // Read lines from the file, returns null when end of stream 
+            // is reached
+            while ((strLine = br.readLine()) != null) {
+                content += strLine;
+            }
+            Document doc = new Document(idDoc, content);
+            listOfDocument.add(doc);
+        }
+    }
 }

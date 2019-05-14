@@ -174,8 +174,11 @@ public class Home extends javax.swing.JFrame {
         int folder = chooser.showOpenDialog(this);
         if (folder == JFileChooser.APPROVE_OPTION) {
             index.readDirectory(chooser.getSelectedFile());
-//            JOptionPane.showConfirmDialog(this, "Data sudah Masuk");
-            new InputNewDocument(index).setVisible(true);
+            JOptionPane.showConfirmDialog(this, "Data sudah Masuk");
+            InputNewDocument ok = new InputNewDocument(index);
+            ok.setVisible(true);
+//            new InputNewDocument(index).setVisible(true);
+            
         }
     }//GEN-LAST:event_MenuItem1ActionPerformed
 

@@ -74,7 +74,7 @@ public class InputNewDocument extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Doc","Judul Document"
+                "ID DOC", "Content"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
