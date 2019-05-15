@@ -69,7 +69,10 @@ public class InputNewDocument extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        jDialog1.setMinimumSize(new java.awt.Dimension(500, 600));
+        jDialog1.setBackground(new java.awt.Color(222, 222, 255));
+        jDialog1.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        jDialog1.setLocationByPlatform(true);
+        jDialog1.setMinimumSize(new java.awt.Dimension(700, 600));
 
         TextArea.setColumns(20);
         TextArea.setRows(5);
@@ -83,21 +86,22 @@ public class InputNewDocument extends javax.swing.JFrame {
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+            .addGroup(jDialog1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(label1)
-                        .addContainerGap(487, Short.MAX_VALUE))))
+                .addContainerGap()
+                .addComponent(label1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

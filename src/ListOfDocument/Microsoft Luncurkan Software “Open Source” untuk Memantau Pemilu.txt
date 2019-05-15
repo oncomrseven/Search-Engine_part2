@@ -1,0 +1,46 @@
+KOMPAS.com - Di hari pertama konferensi developer 
+Build 2019 di Seattle, Amerika Serikat, Senin (6/5/2019) kemarin, 
+Microsoft mengumumkan Software Development Kit (SDK) 
+open source bernama “ElectionGuard”. 
+Sesuai dengan julukannya, ElectionGuard bisa digunakan 
+membuat software untuk keperluan memantau kegiatan 
+Pemilihan Umum (Election) di sebuah negara, 
+agar prosesnya aman serta bisa diverifikasi dan diaudit. 
+Pemberi suara, misalnya, bisa melacak suara mereka lewat 
+portal web dengan kode khusus, serta memastikan suara 
+ditabulasi secara seharusnya, tak dimanipulasi, 
+dan telah dijumlahkan dengan benar. ElectionGuard 
+juga bisa dipakai membuat tool verifikasi Pemilu yang 
+bisa digunakan oleh institusi media, pengamat, pemberi suara, 
+juga kandidat dalam kontestasi agar masing-masing dapat 
+memastikan bahwa suara sudah terekam dengan akurat. 
+Baca juga: Sudah Nyoblos? Ayo Kirim Hasil Penghitungan 
+Suara TPS Anda ke Kawal Pemilu Untuk pengamanan data, 
+Microsoft memakai tipe enkripsi bernama “homomorphic encryption” 
+yang didesain khusus untuk keperluan Pemilu, 
+sebagaimana dirangkum KompasTekno dari Windows Central, 
+Sealsa (7/5/2019). Dengan homomorphic encryption, 
+proses matematika seperti penghitungan suara bisa dilakukan, 
+meski data dalam keadaan terenkripsi penuh “Siapa pun bisa 
+mengonfimasi dengan aman bahwa suara  yang terenkripsi ini 
+telah diagregasi dengan benar, dan bahwa tabulasi terenkripsi 
+telah didekripsi dengan benar pula untuk memberikan 
+hasil akhir penghitungannnya,” sebut Microsoft. Selain itu, 
+Microsoft turut membuat rancangan mesin voting untuk 
+memudahkan proses pemungutan suara. Pemberi suara bisa 
+meriset kandidat dan menentukan pilihan di rumah. Setelah itu, 
+mereka tinggal mencetak kode QR untuk dibawa 
+ke tempat pemungutan suara. Di sana, mesin akan 
+memindai kode QR dan secara otomatis menambahkan suara 
+untuk kandidat pilihannya ke dalam penghitungan keseluruhan. 
+SDK ElectionGuard diperkirakan akan mulai tersedia secaa 
+open-source di repositori GitHub sekitar pertengahan tahun ini. 
+Soal mesin, Microsoft masih berdiskusi dengan sejumlah vendor 
+untuk menyematkan fitur-fitur ElectionGuard di perangkat mereka.
+
+Artikel ini telah tayang di Kompas.com dengan judul 
+"Microsoft Luncurkan Software “Open Source” untuk Memantau Pemilu", 
+https://tekno.kompas.com/read/2019/05/07/10343747/microsoft-luncurkan-software-open-source-untuk-memantau-pemilu. 
+
+Penulis : Oik Yusuf
+Editor : Reska K. Nistanto
