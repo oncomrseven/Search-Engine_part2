@@ -16,6 +16,7 @@ import java.util.StringTokenizer;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import model.Document;
 import model.InvertedIndex;
 
@@ -26,23 +27,24 @@ import model.InvertedIndex;
 public class InputNewDocument extends javax.swing.JFrame {
 
     ArrayList<Document> document = new ArrayList<>();
-    InvertedIndex index = new InvertedIndex();
+    InvertedIndex index;
 
-    public InputNewDocument(InvertedIndex idx) {
+    public InputNewDocument() {
+        index = new InvertedIndex();
+        initComponents();    
+    }
+    
+    public void tam(InvertedIndex idx){
         index = idx;
-        initComponents();
-        System.out.println("sfd");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int baris = model.getRowCount();
         for (int i = 0; i < baris; i++) {
             model.removeRow(0);
         }
         for (int i = 0; i < index.getListOfDocument().size(); i++) {
-            System.out.println("ss");
             Object[] item = {index.getListOfDocument().get(i).getId(), index.getListOfDocument().get(i).getContent()};
             model.addRow(item);
         }
-        
     }
 
     /**
@@ -54,6 +56,10 @@ public class InputNewDocument extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TextArea = new javax.swing.JTextArea();
+        label1 = new javax.swing.JLabel();
         panel1 = new javax.swing.JPanel();
         panel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,6 +68,37 @@ public class InputNewDocument extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jDialog1.setMinimumSize(new java.awt.Dimension(500, 600));
+
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane2.setViewportView(TextArea);
+
+        label1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        label1.setText("Breaking News");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addComponent(label1)
+                        .addContainerGap(487, Short.MAX_VALUE))))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +114,11 @@ public class InputNewDocument extends javax.swing.JFrame {
                 "ID DOC", "Content"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -169,6 +211,15 @@ public class InputNewDocument extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        TableModel table = jTable1.getModel();
+        jDialog1.setVisible(true);
+        TextArea.setText(table.getValueAt(i, 1).toString());
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -207,11 +258,15 @@ public class InputNewDocument extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu1;
+    private javax.swing.JTextArea TextArea;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel label1;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     // End of variables declaration//GEN-END:variables

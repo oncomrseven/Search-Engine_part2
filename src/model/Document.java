@@ -144,27 +144,27 @@ public class Document implements Comparable<Document> {
      * Fungsi untuk membaca sebuah file *.txt dan hasil baca dimasukkan ke
      * atribut content
      */
-    public static Document readFile(int idDoc, File file) {
-        // baca file
-        String content = "";
-        FileReader fileReader;
-        try {
-            fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String str;
-            while ((str = bufferedReader.readLine()) != null) {
-                content += str;
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Document.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Document.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Document document= new Document(idDoc, content);
-        document.IndonesiaStemming();
-
-        return document;
-    }
+//    public static Document readFile(int idDoc, File file) {
+//        // baca file
+//        String content = "";
+//        FileReader fileReader;
+//        try {
+//            fileReader = new FileReader(file);
+//            BufferedReader bufferedReader = new BufferedReader(fileReader);
+//            String str;
+//            while ((str = bufferedReader.readLine()) != null) {
+//                content += str;
+//            }
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(Document.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Document.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        Document document= new Document(idDoc, content);
+////        document.IndonesiaStemming();
+//
+//        return document;
+//    }
 
     @Override
     public String toString() {

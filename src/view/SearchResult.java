@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.InvertedIndex;
+import model.SearchingResult;
+
 /**
  *
  * @author USER
@@ -14,9 +19,12 @@ public class SearchResult extends javax.swing.JFrame {
     /**
      * Creates new form SearchingResult
      */
+    InvertedIndex index;
+
     public SearchResult() {
+        index = new InvertedIndex();
         initComponents();
-        
+
     }
 
     /**
@@ -92,6 +100,24 @@ public class SearchResult extends javax.swing.JFrame {
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu2ActionPerformed
+
+    public void tam(InvertedIndex idx, String query) {
+        index =idx;
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        ArrayList<SearchingResult> hasilCari2 = index.searchCosineSimilarity(query);
+        int baris = model.getRowCount();
+        for (int i = 0; i < baris; i++) {
+            model.removeRow(0);
+        }
+        for (int i = 0; i < hasilCari2.size(); i++) {
+            SearchingResult doc = hasilCari2.get(i);
+            System.out.println("IdDokumen = " + doc.getDocument().getId() + ", weight = " + doc.getSimilarity());
+             Object[] item = {doc.getDocument().getId(), doc.getDocument().getContent(), doc.getSimilarity()};
+            model.addRow(item);
+        }
+        
+
+    }
 
     /**
      * @param args the command line arguments

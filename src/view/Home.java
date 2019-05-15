@@ -173,35 +173,26 @@ public class Home extends javax.swing.JFrame {
 
         int folder = chooser.showOpenDialog(this);
         if (folder == JFileChooser.APPROVE_OPTION) {
-            index.readDirectory(chooser.getSelectedFile());
+            index.listAllFiles(chooser.getSelectedFile());
+//            index.readDirectory(chooser.getSelectedFile());
             JOptionPane.showConfirmDialog(this, "Data sudah Masuk");
-            InputNewDocument ok = new InputNewDocument(index);
+            InputNewDocument ok = new InputNewDocument();
+            ok.tam(index);
             ok.setVisible(true);
-//            new InputNewDocument(index).setVisible(true);
-            
         }
     }//GEN-LAST:event_MenuItem1ActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        index.makeDictionaryWithTermNumber();
-        ArrayList<SearchingResult> cari = index.searchCosineSimilarity(searchDocument.getText());
-        searchDocument.setText("");
-        SearchResult SR = new SearchResult();
-        DefaultTableModel model = (DefaultTableModel) SR.table1.getModel();
-        int baris = model.getRowCount();
-        for (int i = 0; i < baris; i++) {
-            model.removeRow(0);
-        }
-        for (int i = 0; i < cari.size(); i++) {
-            Object[] item = {cari.get(i).getDocument().getId(), cari.get(i).getDocument().getContent(), cari.get(i).getSimilarity()};
-            model.addRow(item);
-        }
-         new SearchResult().setVisible(true);
+      String query = searchDocument.getText();
+        
+        SearchResult search = new SearchResult();
+        search.tam(index,query);
+        search.setVisible(true);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDocumentActionPerformed
         // TODO add your handling code here:
-        new InputNewDocument(index).setVisible(true);
+        new InputNewDocument().setVisible(true);
     }//GEN-LAST:event_searchDocumentActionPerformed
 
     /**

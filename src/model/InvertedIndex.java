@@ -563,21 +563,20 @@ public class InvertedIndex {
 
     //fungsi untuk membuat list dokument dari sebuah directory
     //asumsikan isi file cukup disimpan dalam sebuah obyek string
-    public void readDirectory(File directory) {
-        File[] fileNames = directory.listFiles();
-        int i = getDocumentSize() + 1;
-        for (File currentFile : fileNames) {
-            if (currentFile.isDirectory()) {
-                readDirectory(currentFile);
-            } else {
-                Document doc = new Document();
-                doc.readFile(i, currentFile);
-                addNewDocument(doc);
-            }
-            i++;
-        }
-        makeDictionaryWithTermNumber();
-    }
+//    public void readDirectory(File directory) {
+//        File[] fileNames = directory.listFiles();
+//        int i = getDocumentSize() + 1;
+//        for (File currentFile : fileNames) {
+//            if (currentFile.isDirectory()) {
+//                readDirectory(currentFile);
+//            } else {
+//                Document doc = Document.readFile(i, currentFile);
+//                addNewDocument(doc);
+//            }
+//            i++;
+//        }
+//        makeDictionaryWithTermNumber();
+//    }
 
     // Uses listFiles method  
     public void listAllFiles(File folder) {
@@ -610,7 +609,7 @@ public class InvertedIndex {
             // Read lines from the file, returns null when end of stream 
             // is reached
             while ((strLine = br.readLine()) != null) {
-                content += strLine;
+                content += strLine + " \n";
             }
             Document doc = new Document(idDoc, content);
             listOfDocument.add(doc);

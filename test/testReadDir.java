@@ -16,7 +16,7 @@ import model.InvertedIndex;
 public class testReadDir {
 
     public static void main(String[] args) {
-        File folder = new File("H:\\Semester 6\\Pemerolehan informasi\\Document");
+        File folder = new File("E:\\KULIAH\\Document");
         InvertedIndex index = new InvertedIndex();
         index.listAllFiles(folder);
         
